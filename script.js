@@ -2,7 +2,7 @@
 const CONFIG = {
   // Must be a REAL deadline you will honour. Don't use a fake rolling timer.
   deadline: "2026-11-30T23:59:59+03:00",
-  whatsappNumber: "254700000000", // international format, no "+"
+  whatsappNumber: "254181138760", // international format, no "+"
 };
 
 // Countdown
@@ -37,8 +37,16 @@ document.getElementById("audit-form").addEventListener("submit", (e) => {
     `Name: ${f.name.value.trim()}\n` +
     `Business: ${f.business.value.trim()}\n` +
     `Industry: ${f.industry.value}\n` +
+    `Package: ${f.package.value || "Not sure yet"}\n` +
     `Link: ${f.link.value.trim() || "n/a"}`;
   window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
 });
+
+// Package buttons preselect the form option
+document.querySelectorAll("[data-package]").forEach((a) =>
+  a.addEventListener("click", () => {
+    document.querySelector('#audit-form [name="package"]').value = a.dataset.package;
+  })
+);
 
 document.getElementById("yr").textContent = new Date().getFullYear();

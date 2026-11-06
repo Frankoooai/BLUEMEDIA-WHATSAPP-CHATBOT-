@@ -23,6 +23,8 @@ em{font-style:italic;color:var(--purple2)}
 
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(16px,5vw,56px);position:sticky;top:0;z-index:10;background:rgba(242,245,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.02em;color:var(--purple)}
+.logo-img{width:44px;height:44px;border-radius:50%;display:block}
+.sr{position:absolute;left:-9999px}
 .logo-mark{display:grid;place-items:center;width:34px;height:34px;border:1.5px solid var(--purple);color:var(--purple);font-size:20px}
 .nav nav{display:flex;gap:28px;font-size:14px;color:var(--muted)}
 .nav nav a:hover{color:var(--purple)}
@@ -122,3 +124,24 @@ blockquote.card footer{margin-top:14px;font-size:13px}
   .logo{font-size:18px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* packages */
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;margin-top:36px!important}
+.pack{position:relative;display:flex;flex-direction:column;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:30px 26px}
+.pack .checks{flex:1;align-content:start;margin:4px 0 8px;font-size:15px}
+.pack .btn{text-align:center;align-self:stretch}
+.pack-tag{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--purple2)}
+.pack-line{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--muted)}
+.pack-inc{font-weight:600;color:var(--purple);font-size:14px}
+.pack-result{font-size:14px;color:var(--muted)}
+.pack-result strong{color:var(--purple)}
+.pack-featured{background:var(--purple-deep);border-color:var(--purple-deep);color:var(--on-purple);transform:translateY(-14px);box-shadow:0 30px 60px rgba(43,22,80,.3)}
+.pack-featured h3{color:#fff}
+.pack-featured .pack-tag,.pack-featured .pack-line,.pack-featured .pack-result,.pack-featured .pack-inc{color:#cfc0ee}
+.pack-featured .pack-result strong{color:#fff}
+.pack-featured .checks li::before{color:#bda6f0}
+.pack-featured .btn{background:var(--bg);color:var(--purple)}
+.pack-featured .btn:hover{background:#fff}
+.pack-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--purple2);color:#fff;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 16px;border-radius:99px}
+.pack-note{max-width:720px!important;text-align:center;color:var(--muted);font-size:14px;margin-top:34px!important}
+@media(max-width:1000px){.packages{grid-template-columns:1fr;max-width:520px;margin-inline:auto}.pack-featured{transform:none;order:-1}}
