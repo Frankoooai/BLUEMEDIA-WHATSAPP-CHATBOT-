@@ -50,3 +50,45 @@ document.querySelectorAll("[data-package]").forEach((a) =>
 );
 
 document.getElementById("yr").textContent = new Date().getFullYear();
+
+// Mobile menu
+(function () {
+  const btn = document.querySelector(".menu-btn");
+  const nav = document.getElementById("site-nav");
+  const close = () => { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); };
+  btn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(open));
+  });
+  nav.addEventListener("click", (e) => { if (e.target.tagName === "A") close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+})();
+
+// Header shadow once the page scrolls
+(function () {
+  const header = document.querySelector(".nav");
+  const on = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  on();
+  window.addEventListener("scroll", on, { passive: true });
+})();
+
+// Scroll reveal: short, ease-out, once. Skipped for reduced motion.
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  const groups = ".hero > *, .sec-head, .section > h2, .section > .lead, .section > .eyebrow, .tile, .line, .pack, .stand, .record-card, .chips, .how-photo, .steps li, .grid3 > *, .offer, .faq details, .form";
+  const els = [...document.querySelectorAll(groups)];
+  els.forEach((el) => {
+    el.classList.add("reveal");
+    const i = [...el.parentElement.children].filter((c) => c.classList.contains("reveal") || els.includes(c)).indexOf(el);
+    el.style.transitionDelay = Math.min(i, 5) * 60 + "ms";
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add("in");
+      io.unobserve(en.target);
+      en.target.addEventListener("transitionend", () => { en.target.style.transitionDelay = ""; }, { once: true });
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  els.forEach((el) => io.observe(el));
+})();

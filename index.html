@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,11 +7,13 @@
 <meta name="description" content="Decent Image Media designs, prints, fabricates and installs brands: office print, signage, fleet branding, merchandise, event branding and exhibition stands.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Sora:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<script>document.documentElement.className="js"</script>
+<a class="skip" href="#top">Skip to content</a>
 
 <!-- ONE announcement bar only -->
 <div class="bar" role="status">
@@ -23,7 +25,8 @@
   <a class="logo" href="#top" aria-label="Decent Image Media home">
     <img class="logo-img" src="logo.png" width="44" height="44" alt=""><span>Decent Image <em>Media</em></span>
   </a>
-  <nav aria-label="Primary">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span></button>
+  <nav aria-label="Primary" id="site-nav">
     <a href="#work">Work</a>
     <a href="#services">Business Branding</a>
     <a href="#events">Events &amp; Expos</a>
@@ -36,8 +39,9 @@
 <main id="top">
 
 <!-- 1. HERO: one big statement -> showreel -> CTA -> trust beside CTA -->
+<div class="royal">
 <section class="hero">
-  <p class="eyebrow">Design · Print · Signage · Fleet · Events &amp; Exhibitions</p>
+  <p class="eyebrow orn">Design · Print · Signage · Fleet · Exhibitions</p>
   <h1>We make brands<br><em>impossible to miss.</em></h1>
   <p class="hero-sub">From the business card in your client's hand to the stand that stops a whole expo hall. Designed, produced and installed by one team.</p>
 
@@ -60,13 +64,14 @@
     <li>Quoted to an agreed scope</li>
   </ul>
 </section>
+</div>
 
 <!-- 2. Client logo wall (agency standard: trust before detail) -->
 <section class="logos" aria-label="Clients">
   <p>Brands we've worked with</p>
   <!-- Swap names for logo images (with each client's permission) -->
   <div class="logo-row">
-    <span>Kent Africa</span><span>Alayed Industrial</span><span>Marstek</span><span>Yanyi Group</span><span>Weetabix</span>
+    <span>Kent Africa</span><span>Alayed Industrial</span><span>Marstek</span><span>Yanyi Group</span><span>Weetabix</span><span>Costa Coffee</span><span>Aeron</span><span>SAG-CO</span>
   </div>
 </section>
 
@@ -86,16 +91,16 @@
       <div class="tile-cap"><span>Exhibition stand</span><b>Marstek</b></div></a>
     <a class="tile" href="#events"><img src="work/yanyi-stand.webp" alt="Yanyi Group exhibition stand with 3D lettering and glazed frontage" loading="lazy">
       <div class="tile-cap"><span>Exhibition stand</span><b>Yanyi Group</b></div></a>
-    <a class="tile" href="#book"><div class="photo ph"><span>Photo: pylon / 3D signage</span></div>
-      <div class="tile-cap"><span>Signage</span><b class="ph">[Client]</b></div></a>
-    <a class="tile" href="#book"><div class="photo ph"><span>Photo: company profile</span></div>
-      <div class="tile-cap"><span>Print &amp; collateral</span><b class="ph">[Client]</b></div></a>
+    <a class="tile" href="#services"><img src="work/aeron-pylon.webp" alt="Aeron roadside pylon sign with illuminated logo" loading="lazy">
+      <div class="tile-cap"><span>Pylon signage</span><b>Aeron</b></div></a>
+    <a class="tile" href="#services"><img src="work/costa-lightbox.webp" alt="Costa Coffee projecting lightbox sign with cut-out lettering" loading="lazy" style="object-position:center 30%">
+      <div class="tile-cap"><span>Projecting lightbox</span><b>Costa Coffee</b></div></a>
   </div>
 </section>
 
 <!-- 4. PART ONE: everyday business branding -->
 <section class="section alt" id="services">
-  <p class="eyebrow center">Part one · Your business, every day</p>
+  <p class="eyebrow center orn">Part one · Your business, every day</p>
   <h2>Everything your business needs to look the part</h2>
   <p class="lead">Four service lines covering every surface where your customers meet your brand.</p>
 
@@ -189,7 +194,7 @@
 
 <!-- 5. PART TWO: events & exhibitions (dark section = a different "stage") -->
 <section class="section stage" id="events">
-  <p class="eyebrow center">Part two · The main stage</p>
+  <p class="eyebrow center orn">Part two · The main stage</p>
   <h2>Turn any venue into your brand</h2>
   <p class="lead">Exhibitions, launches, activations and corporate events. Designed, fabricated, delivered and installed.</p>
 
@@ -244,13 +249,22 @@
 
 <!-- 6. How we work: one team, four steps -->
 <section class="section" id="how">
-  <h2>One team. Idea to installation.</h2>
-  <ol class="steps steps4">
-    <li><b>1</b><h3>Concept</h3><p>We learn your goals and agree the scope.</p></li>
-    <li><b>2</b><h3>Design</h3><p>Mockups and 3D visuals you approve before production.</p></li>
-    <li><b>3</b><h3>Produce</h3><p>Print, fabrication and finishing, checked for quality.</p></li>
-    <li><b>4</b><h3>Install</h3><p>Delivered and installed on time, then we follow up.</p></li>
-  </ol>
+  <div class="how">
+    <figure class="how-photo">
+      <img src="work/sagco-pylon.webp" alt="Our installer fitting a SAG-CO Construction pylon sign on site" loading="lazy">
+      <figcaption>On site: SAG-CO Construction pylon sign</figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow">How we work</p>
+      <h2>One team.<br>Idea to installation.</h2>
+      <ol class="steps steps-v">
+        <li><b>1</b><div><h3>Concept</h3><p>We learn your goals and agree the scope.</p></div></li>
+        <li><b>2</b><div><h3>Design</h3><p>Mockups and 3D visuals you approve before production.</p></div></li>
+        <li><b>3</b><div><h3>Produce</h3><p>Print, fabrication and finishing, checked for quality.</p></div></li>
+        <li><b>4</b><div><h3>Install</h3><p>Delivered and installed on time, then we follow up.</p></div></li>
+      </ol>
+    </div>
+  </div>
 </section>
 
 <!-- 7. Principles (from profile, client-facing) -->
