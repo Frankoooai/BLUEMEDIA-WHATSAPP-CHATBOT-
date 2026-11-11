@@ -232,3 +232,19 @@ h1{font-size:clamp(40px,6.4vw,78px);letter-spacing:-.01em}
   .work{grid-template-columns:1fr}
   .tile-xl{grid-column:auto}
 }
+
+/* real work photos */
+.tile img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.tile-xl img{aspect-ratio:auto;height:calc(100% - 64px);min-height:300px}
+.stand img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 35%}
+.logo-row span{font:600 20px/1 var(--serif);color:var(--purple);opacity:.75;letter-spacing:.02em}
+@media(max-width:860px){.tile-xl img{height:auto;aspect-ratio:16/10;min-height:0}}
+/* equal-height work grid: photos fill each tile */
+.work{grid-auto-rows:330px}
+.tile{display:flex;flex-direction:column}
+.tile img,.tile .photo{flex:1;min-height:0;height:auto;aspect-ratio:auto}
+.tile-cap{flex:none}
+@media(max-width:860px){
+  .work{grid-auto-rows:auto}
+  .tile img,.tile .photo{flex:none;aspect-ratio:16/10}
+}
