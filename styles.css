@@ -469,3 +469,11 @@ p{text-wrap:pretty}
 .email-card b i{font-style:normal}
 .email-card p{margin:6px 0 0!important;font-size:13.5px;color:var(--muted)}
 @media(max-width:760px){.emails{grid-template-columns:1fr}}
+
+/* named track record */
+.record-named{grid-template-columns:1fr 1fr}
+.record-named .record-card{gap:16px;padding:32px 30px}
+.stage .record-named .record-label{font:500 11.5px/1 var(--label);letter-spacing:.24em;text-transform:uppercase;color:var(--sage-soft);max-width:none}
+.record-named ul{list-style:none;display:grid;gap:10px}
+.record-named li{font:600 clamp(21px,2.4vw,30px)/1.15 var(--serif);letter-spacing:-.02em;color:var(--ivory);padding-top:12px;border-top:1px solid rgba(207,201,220,.22)}
+@media(max-width:860px){.record-named{grid-template-columns:1fr}}
