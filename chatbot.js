@@ -37,8 +37,8 @@
     },
     {
       id: "stands", chip: "Exhibition stands",
-      k: ["stand", "exhibition", "expo", "booth", "event", "backdrop", "tent", "gazebo", "stage", "trade show"],
-      a: "We build system stands (modular and reusable) and custom stands designed around your brand, plus backdrops, banners, flags, tents and stage branding. We deliver, install and dismantle. Share your event and floor size for a quote.",
+      k: ["stand", "exhibition", "expo", "booth", "event", "backdrop", "tent", "gazebo", "stage", "trade show", "banner", "roll-up", "rollup", "pull-up", "roll", "teardrop", "flag", "feather", "telescopic", "pole"],
+      a: "We build system stands (modular and reusable) and custom stands designed around your brand, plus roll-up banners, teardrop and telescopic flags, street pole banners, backdrops, tents and stage branding. We deliver, install and dismantle. Share your event and floor size for a quote.",
     },
     {
       id: "audit", chip: "Free audit",
