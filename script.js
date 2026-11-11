@@ -39,7 +39,14 @@ document.getElementById("audit-form").addEventListener("submit", (e) => {
     `Industry: ${f.industry.value}\n` +
     `Interested in: ${f.package.value || "Not sure yet"}\n` +
     `Link: ${f.link.value.trim() || "n/a"}`;
-  window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+  const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank", "noopener");
+  // Fallback if the browser blocks the new tab
+  note.textContent = "If WhatsApp didn't open, ";
+  const link = document.createElement("a");
+  link.href = url; link.target = "_blank"; link.rel = "noopener";
+  link.textContent = "tap here to open it"; link.style.textDecoration = "underline";
+  note.append(link, ".");
 });
 
 // Package buttons preselect the form option
