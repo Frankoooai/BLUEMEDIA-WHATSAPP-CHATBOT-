@@ -2,7 +2,7 @@
 const CONFIG = {
   // Must be a REAL deadline you will honour. Don't use a fake rolling timer.
   deadline: "2026-11-30T23:59:59+03:00",
-  whatsappNumber: "254181138760", // international format, no "+"
+  whatsappNumber: "254182832454", // international format, no "+"
 };
 
 // Countdown
