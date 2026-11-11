@@ -37,7 +37,7 @@ document.getElementById("audit-form").addEventListener("submit", (e) => {
     `Name: ${f.name.value.trim()}\n` +
     `Business: ${f.business.value.trim()}\n` +
     `Industry: ${f.industry.value}\n` +
-    `Package: ${f.package.value || "Not sure yet"}\n` +
+    `Interested in: ${f.package.value || "Not sure yet"}\n` +
     `Link: ${f.link.value.trim() || "n/a"}`;
   window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
 });
