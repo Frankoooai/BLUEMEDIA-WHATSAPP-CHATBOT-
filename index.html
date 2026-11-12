@@ -9,6 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Sora:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Decent Image Media | Branding, Print, Signage &amp; Exhibitions">
+<meta property="og:description" content="Design consultancy, print, signage, fleet branding and exhibition stands. Designed, produced and installed by one team in Nairobi, Kenya.">
+<!-- TODO once the domain is live: add og:url and og:image with full https:// addresses -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Decent Image Media",
+  "description": "Design consultancy, print, signage, fleet branding, event branding and exhibition stands.",
+  "telephone": "+254182832454",
+  "address": {"@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE"},
+  "areaServed": "Kenya",
+  "knowsAbout": ["Exhibition stands", "Signage", "Vehicle branding", "Printing", "Event branding", "Brand design"]
+}
+</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -32,6 +48,12 @@
     <a href="#events">Events &amp; Expos</a>
     <a href="#how">How We Work</a>
     <a href="#faq">FAQ</a>
+    <!-- Shown inside the phone menu only. Add the email lines once the domain is live. -->
+    <div class="nav-contact">
+      <span>Talk to us</span>
+      <a href="https://wa.me/254182832454" target="_blank" rel="noopener">WhatsApp +254 182 832454</a>
+      <p>Nairobi, Kenya</p>
+    </div>
   </nav>
   <a class="btn btn-sm" href="#book">Get a Free Audit</a>
 </header>
@@ -401,12 +423,13 @@
     <div><b>Decent Image Media</b><br><span>Nairobi, Kenya</span></div>
   </div>
   <div class="foot-links">
-    <a href="#services">Business Branding</a><a href="#events">Events &amp; Expos</a><a href="#work">Work</a><a href="#book">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a>
+    <a href="#services">Business Branding</a><a href="#events">Events &amp; Expos</a><a href="#work">Work</a><a href="#book">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="#" data-cookie-settings>Cookie settings</a>
   </div>
   <span>© <span id="yr"></span> Decent Image Media</span>
 </footer>
 
 <script src="script.js"></script>
 <script src="chatbot.js"></script>
+<script src="consent.js"></script>
 </body>
 </html>
