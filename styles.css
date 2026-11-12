@@ -542,3 +542,10 @@ p{text-wrap:pretty}
   .nav nav.open{display:flex}
   .nav nav a{padding:14px 2px;border-top:1px solid rgba(207,201,220,.18);font-size:16px;color:var(--ivory)}
 }
+
+/* three-line menu button; turns into a cross when open */
+.menu-btn{gap:5px}
+.menu-btn span{transition:transform .2s var(--ease-out),opacity .15s var(--ease-out)}
+.menu-btn[aria-expanded="true"] span:first-child{transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
