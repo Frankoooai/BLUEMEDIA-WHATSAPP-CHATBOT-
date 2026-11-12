@@ -3,6 +3,8 @@ const CONFIG = {
   // Must be a REAL deadline you will honour. Don't use a fake rolling timer.
   deadline: "2026-11-30T23:59:59+03:00",
   whatsappNumber: "254182832454", // international format, no "+"
+  // Enquiry form goes to this inbox (via FormSubmit.co, no server needed)
+  formEmail: "consultancy@decentimagemedia.com",
 };
 
 // Countdown
@@ -23,31 +25,71 @@ const CONFIG = {
   setInterval(tick, 1000);
 })();
 
-// Audit form -> WhatsApp (swap for a real form backend / CRM later)
-document.getElementById("audit-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const f = e.target;
+// Audit form -> consultancy inbox (email)
+(function () {
+  const form = document.getElementById("audit-form");
   const note = document.getElementById("form-note");
-  if (!f.name.value.trim() || !f.business.value.trim() || !f.industry.value) {
-    note.textContent = "Please add your name, business and industry.";
-    return;
-  }
-  const msg =
-    `Hello Decent Image Media, I'd like my free brand & marketing audit.\n` +
-    `Name: ${f.name.value.trim()}\n` +
-    `Business: ${f.business.value.trim()}\n` +
-    `Industry: ${f.industry.value}\n` +
-    `Interested in: ${f.package.value || "Not sure yet"}\n` +
-    `Link: ${f.link.value.trim() || "n/a"}`;
-  const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-  window.open(url, "_blank", "noopener");
-  // Fallback if the browser blocks the new tab
-  note.textContent = "If WhatsApp didn't open, ";
-  const link = document.createElement("a");
-  link.href = url; link.target = "_blank"; link.rel = "noopener";
-  link.textContent = "tap here to open it"; link.style.textDecoration = "underline";
-  note.append(link, ".");
-});
+  const btn = form.querySelector('button[type="submit"]');
+  const btnText = btn.textContent;
+  const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    note.classList.remove("ok", "err");
+    if (!f.name.value.trim() || !f.business.value.trim() || !f.industry.value) {
+      note.textContent = "Please add your name, business and industry.";
+      note.classList.add("err");
+      return;
+    }
+    if (!validEmail(f.email.value.trim())) {
+      note.textContent = "Please add a valid email address so we can reply.";
+      note.classList.add("err");
+      f.email.focus();
+      return;
+    }
+    if (f._honey.value) return; // bot
+
+    const data = {
+      Name: f.name.value.trim(),
+      Email: f.email.value.trim(),
+      Phone: f.phone.value.trim() || "Not given",
+      Business: f.business.value.trim(),
+      Industry: f.industry.value,
+      "Interested in": f.package.value || "Free brand audit / not sure yet",
+      "Website or Instagram": f.link.value.trim() || "Not given",
+      _subject: "New enquiry from the website: " + f.business.value.trim(),
+      _replyto: f.email.value.trim(),
+      _template: "table",
+      _captcha: "false",
+    };
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    note.textContent = "";
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/" + CONFIG.formEmail, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) === "false") throw new Error(out.message || res.status);
+      form.reset();
+      note.textContent = "Thank you. Your request is with our consultancy team, and we'll reply by email.";
+      note.classList.add("ok");
+    } catch (err) {
+      const wa = "https://wa.me/" + CONFIG.whatsappNumber + "?text=" +
+        encodeURIComponent("Hello Decent Image Media, I tried to send a request on your website. My business is " + data.Business + ".");
+      note.innerHTML = 'Sorry, that didn\'t send. Please try again in a moment, or <a href="' + wa +
+        '" target="_blank" rel="noopener" style="text-decoration:underline">message us on WhatsApp</a>.';
+      note.classList.add("err");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = btnText;
+    }
+  });
+})();
 
 // Package buttons preselect the form option
 document.querySelectorAll("[data-package]").forEach((a) =>

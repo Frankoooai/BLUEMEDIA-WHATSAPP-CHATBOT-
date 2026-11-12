@@ -388,9 +388,11 @@
 <!-- 11. Contact: form opens WhatsApp prefilled -->
 <section class="final" id="book">
   <h2>Let's make your brand <em>impossible to miss.</em></h2>
-  <p>Tell us what you need. We'll reply personally on WhatsApp.</p>
+  <p>Tell us what you need. We'll reply personally by email.</p>
   <form id="audit-form" class="form" novalidate>
     <label>Your name<input name="name" required autocomplete="name"></label>
+    <label>Email<input name="email" type="email" required autocomplete="email" inputmode="email"></label>
+    <label>Phone <small>(optional)</small><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
     <label>Business name<input name="business" required autocomplete="organization"></label>
     <label>Industry
       <select name="industry" required>
@@ -412,15 +414,16 @@
       </select>
     </label>
     <label>Website or Instagram<input name="link" placeholder="https://" autocomplete="url"></label>
-    <button class="btn btn-lg" type="submit">Send on WhatsApp</button>
-    <p class="form-note" id="form-note">This opens WhatsApp with your details ready to send. See our <a href="privacy.html" style="text-decoration:underline">privacy policy</a>.</p>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn-lg" type="submit">Send my request</button>
+    <p class="form-note" id="form-note" role="status">Your request goes straight to our consultancy team. See our <a href="privacy.html" style="text-decoration:underline">privacy policy</a>.</p>
   </form>
 
   <!-- Email contacts. Replace the domain once your company email is set up, then these become links. -->
   <div class="emails" aria-label="Email contacts">
-    <div class="email-card"><span>Sales</span><b>sales@<i class="ph">yourdomain.com</i></b><p>Quotes, orders and new projects</p></div>
-    <div class="email-card"><span>Consultancy</span><b>consultancy@<i class="ph">yourdomain.com</i></b><p>Brand audits and strategy</p></div>
-    <div class="email-card"><span>Admin</span><b>admin@<i class="ph">yourdomain.com</i></b><p>Accounts, invoices and suppliers</p></div>
+    <div class="email-card"><span>Sales</span><b><a href="mailto:sales@decentimagemedia.com">sales@<wbr>decentimagemedia.com</a></b><p>Quotes, orders and new projects</p></div>
+    <div class="email-card"><span>Consultancy</span><b><a href="mailto:consultancy@decentimagemedia.com">consultancy@<wbr>decentimagemedia.com</a></b><p>Brand audits and strategy</p></div>
+    <div class="email-card"><span>Admin</span><b><a href="mailto:admin@decentimagemedia.com">admin@<wbr>decentimagemedia.com</a></b><p>Accounts, invoices and suppliers</p></div>
   </div>
 </section>
 

@@ -585,3 +585,13 @@ h1 .swoosh::after{content:"";position:absolute;left:2%;right:2%;bottom:-.08em;he
   transform-origin:left center;animation:swoosh-draw .9s .5s var(--ease-out) both}
 @keyframes swoosh-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){h1 .swoosh::after{animation:none}}
+
+/* enquiry form additions */
+.form label small{font-size:inherit;opacity:.75}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form .btn:disabled{opacity:.7;cursor:progress}
+.form-note.ok{color:#2f6b3a;font-weight:500}
+.form-note.err{color:#a3324a}
+.email-card b a{color:inherit}
+@media(hover:hover){.email-card b a:hover{text-decoration:underline}}
+.email-card b{overflow-wrap:normal;word-break:normal;font-size:15px}
