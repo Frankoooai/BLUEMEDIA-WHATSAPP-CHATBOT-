@@ -53,6 +53,10 @@
     },
   ];
 
+  // The small greeting that pops up beside the buttons shortly after the page loads.
+  const TEASER = "Hello, welcome to Decent Image Media. Looking for a quote or have a question? I can help.";
+  const TEASER_DELAY_MS = 2500;
+
   const GREETING = "Hello, welcome to Decent Image Media. Ask me about pricing, timelines or refunds, or pick a topic below.";
   const FALLBACK = "I don't have a clear answer for that one. Our team can help you directly on WhatsApp.";
 
@@ -137,7 +141,27 @@
     '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.800 2 6.800L3 29l6.700-1.900c1.900 1 4 1.600 6.300 1.600 7.200 0 13-5.700 13-12.800S23.200 3 16 3zm0 23.300c-2 0-3.900-.6-5.500-1.600l-.4-.2-4 1.100 1.100-3.800-.3-.400a10.300 10.300 0 0 1-1.700-5.600C5.200 10 10 5.300 16 5.300S26.800 10 26.800 15.800 22 26.300 16 26.300zm5.900-7.800c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.2-.2.300-.800 1-1 1.200-.2.2-.4.2-.7.1-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.6c.2-.2.2-.3.300-.5.1-.2.1-.4 0-.6l-1-2.300c-.2-.6-.5-.5-.700-.5h-.6c-.2 0-.6.1-.8.4-.3.300-1.100 1.100-1.100 2.600s1.100 3 1.300 3.200c.2.2 2.200 3.300 5.300 4.600.7.3 1.300.5 1.800.6.7.2 1.400.2 1.900.1.6-.1 1.900-.8 2.100-1.500.3-.7.3-1.400.2-1.500-.1-.2-.3-.2-.6-.4z"/></svg>';
 
   panel.append(head, log, chips, form);
-  document.body.append(waFloat, launcher, panel);
+  // Greeting prompt: appears once per visit, opens the chat when tapped
+  const teaser = el("div", "chat-teaser");
+  teaser.hidden = true;
+  teaser.setAttribute("role", "status");
+  const teaserOpen = el("button", "chat-teaser-text", TEASER);
+  teaserOpen.type = "button";
+  const teaserClose = el("button", "chat-teaser-close", "×");
+  teaserClose.type = "button";
+  teaserClose.setAttribute("aria-label", "Dismiss greeting");
+  teaser.append(teaserOpen, teaserClose);
+
+  function seenTeaser() { try { return sessionStorage.getItem("dim-greeted") === "1"; } catch (e) { return false; } }
+  function hideTeaser() {
+    teaser.hidden = true;
+    try { sessionStorage.setItem("dim-greeted", "1"); } catch (e) {}
+  }
+  teaserOpen.addEventListener("click", () => { hideTeaser(); open(); });
+  teaserClose.addEventListener("click", hideTeaser);
+  if (!seenTeaser()) setTimeout(() => { if (panel.hidden) teaser.hidden = false; }, TEASER_DELAY_MS);
+
+  document.body.append(teaser, waFloat, launcher, panel);
 
   function say(text, who) {
     const row = el("div", "chat-msg " + (who === "me" ? "me" : "bot"));
@@ -174,6 +198,7 @@
     panel.hidden = false;
     launcher.setAttribute("aria-expanded", "true");
     waFloat.hidden = true;
+    hideTeaser();
     if (!greeted) { say(GREETING, "bot"); greeted = true; }
     input.focus({ preventScroll: true });
   }
