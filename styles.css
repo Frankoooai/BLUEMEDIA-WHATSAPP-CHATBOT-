@@ -624,3 +624,8 @@ h1 .swoosh::after{content:"";position:absolute;left:2%;right:2%;bottom:-.08em;he
   .nav-drop-panel{position:static;transform:none;width:auto;box-shadow:none;border:0;background:rgba(255,255,255,.04);margin:0 0 10px;animation:none}
 }
 .cm{border-radius:0}
+
+/* client strip: small logo beside a name */
+.logo-row .client-logo{display:inline-flex;align-items:center;gap:8px}
+.logo-row .client-logo img{height:24px;width:auto;display:block}
+.logo-row{align-items:center}.logo-row > span{line-height:1}
