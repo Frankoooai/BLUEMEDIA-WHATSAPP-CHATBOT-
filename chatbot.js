@@ -55,7 +55,8 @@
 
   // The small greeting that pops up beside the buttons shortly after the page loads.
   const TEASER = "Hello, welcome to Decent Image Media. Looking for a quote or have a question? I can help.";
-  const TEASER_DELAY_MS = 2500;
+  const TEASER_DELAY_MS = 900;
+  const TEASER_SOUND = true; // soft pop when the greeting appears
 
   const GREETING = "Hello, welcome to Decent Image Media. Ask me about pricing, timelines or refunds, or pick a topic below.";
   const FALLBACK = "I don't have a clear answer for that one. Our team can help you directly on WhatsApp.";
@@ -159,7 +160,55 @@
   }
   teaserOpen.addEventListener("click", () => { hideTeaser(); open(); });
   teaserClose.addEventListener("click", hideTeaser);
-  if (!seenTeaser()) setTimeout(() => { if (panel.hidden) teaser.hidden = false; }, TEASER_DELAY_MS);
+  // Soft "pop", generated in the browser (no audio file).
+  // Browsers only allow sound after the visitor has interacted with the page, so if
+  // the greeting appears before that, the pop plays on their first tap, click or key press.
+  let popped = false;
+  let audio = null;
+  function playPop() {
+    if (popped || !audio || audio.state !== "running") return false;
+    const t = audio.currentTime;
+    const osc = audio.createOscillator();
+    const gain = audio.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(620, t);
+    osc.frequency.exponentialRampToValueAtTime(170, t + 0.09);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.22, t + 0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.13);
+    osc.connect(gain).connect(audio.destination);
+    osc.start(t);
+    osc.stop(t + 0.14);
+    popped = true;
+    return true;
+  }
+  // Resolves true if the pop played, false if the browser is still blocking sound.
+  function pop() {
+    if (!TEASER_SOUND || popped) return Promise.resolve(true);
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return Promise.resolve(true);
+    try {
+      audio = audio || new AC();
+      if (audio.state === "running") return Promise.resolve(playPop());
+      const wait = new Promise((r) => setTimeout(r, 400));
+      return Promise.race([audio.resume(), wait]).then(playPop, () => false);
+    } catch (e) { return Promise.resolve(true); }
+  }
+  function showTeaser() {
+    if (!panel.hidden) return;
+    teaser.hidden = false;
+    pop().then((played) => {
+      if (played) return;
+      const onFirstTouch = () => {
+        window.removeEventListener("pointerdown", onFirstTouch);
+        window.removeEventListener("keydown", onFirstTouch);
+        if (!teaser.hidden) pop();
+      };
+      window.addEventListener("pointerdown", onFirstTouch, { passive: true });
+      window.addEventListener("keydown", onFirstTouch);
+    });
+  }
+  if (!seenTeaser()) setTimeout(showTeaser, TEASER_DELAY_MS);
 
   document.body.append(teaser, waFloat, launcher, panel);
 
