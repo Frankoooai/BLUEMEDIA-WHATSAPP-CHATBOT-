@@ -552,3 +552,7 @@ p{text-wrap:pretty}
 
 /* company name in the header: one colour */
 .logo,.logo em{color:#fff}
+
+/* countdown in a soft gold that sits well with royal purple and sage */
+:root{--gold:#f2cf73}
+.bar strong{color:var(--gold);letter-spacing:.02em}
