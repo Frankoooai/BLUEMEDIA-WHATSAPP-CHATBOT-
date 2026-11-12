@@ -531,3 +531,14 @@ p{text-wrap:pretty}
 .policy ul{margin:0 0 14px 22px;display:grid;gap:8px}
 .policy-lead{font-size:18.5px!important;color:var(--muted)!important}
 .policy strong{color:var(--ink)}
+
+/* header: never wrap; switch to the menu button before things get tight */
+.logo,.nav nav a,.nav .btn-sm{white-space:nowrap}
+@media(max-width:1100px){
+  .menu-btn{display:flex;order:3}
+  .nav{flex-wrap:wrap}
+  .nav .btn-sm{margin-left:auto}
+  .nav nav{display:none;order:4;width:100%;flex-direction:column;gap:0;padding:6px 0 4px}
+  .nav nav.open{display:flex}
+  .nav nav a{padding:14px 2px;border-top:1px solid rgba(207,201,220,.18);font-size:16px;color:var(--ivory)}
+}
