@@ -187,3 +187,52 @@ document.getElementById("yr").textContent = new Date().getFullYear();
     current = "";
   });
 })();
+
+// Client logos: show a few at a time and fade to the next group (like a trust strip).
+// Reads the names/logos already in .logo-row, so the page still lists every client without JavaScript.
+// To add a client's logo, put the file in work/ and add <img src="work/..."> inside its span in index.html.
+(function () {
+  const row = document.querySelector(".logos .logo-row");
+  if (!row) return;
+  const items = [...row.children];
+  if (items.length < 4 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const perGroup = () => (window.innerWidth < 640 ? 2 : 3);
+  const stage = document.createElement("div");
+  stage.className = "client-rotator";
+  stage.setAttribute("aria-hidden", "true"); // the full list stays readable for screen readers
+  row.after(stage);
+  row.classList.add("sr-only-row");
+
+  let start = 0, timer = null;
+  function render() {
+    const n = perGroup();
+    stage.innerHTML = "";
+    for (let i = 0; i < n; i++) {
+      const src = items[(start + i) % items.length];
+      const slot = document.createElement("div");
+      slot.className = "client-slot";
+      const clone = src.cloneNode(true);
+      if (clone.querySelector("img") && !clone.classList.contains("keep-name")) {
+        // logo-only display when a logo file exists
+        [...clone.childNodes].forEach((c) => { if (c.nodeType === 3) c.remove(); });
+      }
+      slot.append(clone);
+      stage.append(slot);
+    }
+  }
+  function next() {
+    stage.classList.add("out");
+    setTimeout(() => {
+      start = (start + perGroup()) % items.length;
+      render();
+      stage.classList.remove("out");
+    }, 450);
+  }
+  render();
+  const run = () => { clearInterval(timer); timer = setInterval(next, 3200); };
+  run();
+  document.addEventListener("visibilitychange", () => (document.hidden ? clearInterval(timer) : run()));
+  let w = window.innerWidth;
+  window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - w) > 80) { w = window.innerWidth; render(); } });
+})();
