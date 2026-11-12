@@ -645,3 +645,6 @@ html{scroll-padding-top:96px}
 .client-slot img{max-height:64px;max-width:180px;width:auto;height:auto;display:block}
 .client-slot .client-logo:not(.keep-name) img{max-height:64px}
 @media(max-width:639px){.client-rotator{grid-template-columns:repeat(2,1fr);min-height:72px}.client-slot img{max-height:48px;max-width:130px}}
+.client-slot .enabled-name{font:700 clamp(17px,1.8vw,22px)/1 var(--serif);letter-spacing:.06em;color:#2f2a8f;gap:12px}
+.client-slot .enabled-name img{max-height:52px}
+.client-slot img[src*="client-kent"]{max-height:92px}@media(max-width:639px){.client-slot img[src*="client-kent"]{max-height:68px}}
