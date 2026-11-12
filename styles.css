@@ -549,3 +549,6 @@ p{text-wrap:pretty}
 .menu-btn[aria-expanded="true"] span:first-child{transform:translateY(7px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
 .menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+
+/* company name in the header: one colour */
+.logo,.logo em{color:#fff}
