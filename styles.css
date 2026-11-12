@@ -520,3 +520,14 @@ p{text-wrap:pretty}
 .chat-teaser-close{flex:none;width:40px;height:40px;border:0;background:none;cursor:pointer;color:var(--muted);font-size:20px;line-height:1;border-radius:50%}
 @media(hover:hover){.chat-teaser-close:hover{color:var(--purple)}.chat-teaser-text:hover{color:var(--purple)}}
 @media(prefers-reduced-motion:reduce){.chat-teaser{animation:none}}
+
+/* privacy policy page */
+.policy{max-width:760px;margin:0 auto;padding:clamp(40px,6vw,80px) max(20px,env(safe-area-inset-left,0px)) clamp(56px,8vw,96px)}
+.policy h1{color:var(--purple);font-size:clamp(28px,4.4vw,48px);margin:10px 0 20px}
+.policy h2{text-align:left;font-size:24px;margin:44px 0 12px}
+.policy h3{font-size:17px;margin:24px 0 6px;color:var(--ink)}
+.policy p,.policy li{color:#4a3d63;font-size:16.5px;line-height:1.7}
+.policy p{margin-bottom:14px}
+.policy ul{margin:0 0 14px 22px;display:grid;gap:8px}
+.policy-lead{font-size:18.5px!important;color:var(--muted)!important}
+.policy strong{color:var(--ink)}
