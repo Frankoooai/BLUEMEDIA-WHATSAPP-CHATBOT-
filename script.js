@@ -152,3 +152,38 @@ document.getElementById("yr").textContent = new Date().getFullYear();
   document.addEventListener("click", (e) => { if (!panel.hidden && !e.target.closest(".nav-drop")) set(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) { set(false); btn.focus(); } });
 })();
+
+// Address bar follows the section being read (#work, #services ...).
+// At the top of the page it shows the plain address with no #.
+(function () {
+  const sections = [...document.querySelectorAll("main section[id]")];
+  const links = [...document.querySelectorAll('#site-nav a[href^="#"]')];
+  if (!sections.length || !history.replaceState) return;
+  let current = location.hash.slice(1) || "";
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    const line = window.innerHeight * 0.35;
+    let id = "";
+    for (const s of sections) if (s.getBoundingClientRect().top <= line) id = s.id;
+    if (window.scrollY < 40) id = "";
+    if (id === current) return;
+    current = id;
+    history.replaceState(null, "", id ? "#" + id : location.pathname + location.search);
+    links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+  }
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  // When opened from a link like /#faq, leave the address alone until the visitor scrolls.
+  if (!location.hash) update();
+  else links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === location.hash));
+
+  // Logo: smooth scroll to the top and clear the # from the address
+  const logo = document.querySelector(".nav .logo");
+  if (logo) logo.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    history.replaceState(null, "", location.pathname + location.search);
+    current = "";
+  });
+})();
