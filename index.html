@@ -56,13 +56,31 @@
     <a href="#services">Business Branding</a>
     <a href="#events">Events &amp; Expos</a>
     <a href="#how">How We Work</a>
-    <a href="#faq">FAQ</a>
-    <!-- Shown inside the phone menu only. Add the email lines once the domain is live. -->
-    <div class="nav-contact">
-      <span>Talk to us</span>
-      <a href="tel:+254182832454">Phone +254 182 832454</a>
-      <p>Nairobi, Kenya</p>
+    <div class="nav-drop">
+      <button type="button" class="nav-drop-btn" aria-expanded="false" aria-controls="contacts-menu">Contacts
+        <svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-drop-panel" id="contacts-menu" hidden>
+        <div class="cm">
+          <span>Consultancy</span>
+          <b>Frank</b>
+          <a href="tel:+254798934863">+254 798 934863</a>
+          <a href="mailto:consultancy@decentimagemedia.com">consultancy@decentimagemedia.com</a>
+        </div>
+        <div class="cm">
+          <span>Sales</span>
+          <!-- TODO(owner): add the sales phone number -->
+          <a href="mailto:sales@decentimagemedia.com">sales@decentimagemedia.com</a>
+        </div>
+        <div class="cm">
+          <span>Admin</span>
+          <a href="tel:+254182832454">+254 182 832454</a>
+          <a href="mailto:admin@decentimagemedia.com">admin@decentimagemedia.com</a>
+        </div>
+        <p class="cm-loc">Nairobi, Kenya</p>
+      </div>
     </div>
+    <a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-sm" href="#book">Get a Free Audit</a>
 </header>
@@ -420,10 +438,10 @@
   </form>
 
   <!-- Email contacts. Replace the domain once your company email is set up, then these become links. -->
-  <div class="emails" aria-label="Email contacts">
+  <div class="emails" id="contacts" aria-label="Contacts">
     <div class="email-card"><span>Sales</span><b><a href="mailto:sales@decentimagemedia.com">sales@<wbr>decentimagemedia.com</a></b><p>Quotes, orders and new projects</p></div>
-    <div class="email-card"><span>Consultancy</span><b><a href="mailto:consultancy@decentimagemedia.com">consultancy@<wbr>decentimagemedia.com</a></b><p>Brand audits and strategy</p></div>
-    <div class="email-card"><span>Admin</span><b><a href="mailto:admin@decentimagemedia.com">admin@<wbr>decentimagemedia.com</a></b><p>Accounts, invoices and suppliers</p></div>
+    <div class="email-card"><span>Consultancy</span><b><a href="mailto:consultancy@decentimagemedia.com">consultancy@<wbr>decentimagemedia.com</a></b><a class="ec-tel" href="tel:+254798934863">Frank · +254 798 934863</a><p>Brand audits and strategy</p></div>
+    <div class="email-card"><span>Admin</span><b><a href="mailto:admin@decentimagemedia.com">admin@<wbr>decentimagemedia.com</a></b><a class="ec-tel" href="tel:+254182832454">+254 182 832454</a><p>Accounts, invoices and suppliers</p></div>
   </div>
 </section>
 

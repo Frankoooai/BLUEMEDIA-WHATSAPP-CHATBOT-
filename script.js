@@ -141,3 +141,14 @@ document.getElementById("yr").textContent = new Date().getFullYear();
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
   els.forEach((el) => io.observe(el));
 })();
+
+// Contacts dropdown in the header
+(function () {
+  const btn = document.querySelector(".nav-drop-btn");
+  const panel = document.getElementById("contacts-menu");
+  if (!btn || !panel) return;
+  const set = (open) => { panel.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
+  btn.addEventListener("click", (e) => { e.stopPropagation(); set(panel.hidden); });
+  document.addEventListener("click", (e) => { if (!panel.hidden && !e.target.closest(".nav-drop")) set(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) { set(false); btn.focus(); } });
+})();

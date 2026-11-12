@@ -595,3 +595,32 @@ h1 .swoosh::after{content:"";position:absolute;left:2%;right:2%;bottom:-.08em;he
 .email-card b a{color:inherit}
 @media(hover:hover){.email-card b a:hover{text-decoration:underline}}
 .email-card b{overflow-wrap:normal;word-break:normal;font-size:15px}
+
+/* Contacts dropdown */
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;font:inherit;color:inherit;padding:6px 0;white-space:nowrap;transition:color .16s var(--ease-out)}
+.nav-drop-btn svg{transition:transform .2s var(--ease-out)}
+.nav-drop-btn[aria-expanded="true"]{color:#fff}
+.nav-drop-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+@media(hover:hover){.nav-drop-btn:hover{color:#fff}}
+.nav-drop-panel{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%);width:320px;background:var(--royal);border:1px solid rgba(207,201,220,.22);border-radius:14px;padding:8px;box-shadow:0 24px 60px rgba(8,3,20,.45);display:grid;gap:2px;animation:chat-in .2s var(--ease-out);z-index:30}
+.nav-drop-panel[hidden]{display:none}
+.cm{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:10px}
+.cm + .cm{border-top:1px solid rgba(207,201,220,.12)}
+.cm span{font:500 11px/1 var(--label);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.cm b{font:600 15px/1.2 var(--serif);color:#fff}
+.nav nav .cm a{padding:2px 0;color:var(--platinum);font-size:14px;white-space:nowrap;border:0}
+@media(hover:hover){.nav nav .cm a:hover{color:#fff;text-decoration:underline}}
+.cm-loc{padding:8px 14px 6px;font-size:12.5px;color:#9f95b8;border-top:1px solid rgba(207,201,220,.12)}
+
+/* phone numbers on the bottom contact cards */
+.ec-tel{display:block;margin-top:4px;font-size:14px;color:var(--ink);font-weight:500}
+@media(hover:hover){.ec-tel:hover{text-decoration:underline}}
+
+/* inside the phone menu: the button is a full-width row, the list opens in place */
+@media(max-width:1100px){
+  .nav-drop{flex-direction:column;align-items:stretch}
+  .nav-drop-btn{justify-content:space-between;padding:14px 2px;border-top:1px solid rgba(207,201,220,.18);font-size:16px;color:var(--ivory);width:100%}
+  .nav-drop-panel{position:static;transform:none;width:auto;box-shadow:none;border:0;background:rgba(255,255,255,.04);margin:0 0 10px;animation:none}
+}
+.cm{border-radius:0}
