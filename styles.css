@@ -556,3 +556,4 @@ p{text-wrap:pretty}
 /* countdown in a soft gold that sits well with royal purple and sage */
 :root{--gold:#f2cf73}
 .bar strong{color:var(--gold);letter-spacing:.02em}
+.bar{color:var(--gold)}
