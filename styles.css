@@ -577,3 +577,11 @@ p{text-wrap:pretty}
 .consent button{min-height:42px;padding:0 18px;border-radius:8px;font:600 14px/1 var(--sans);cursor:pointer;border:1px solid rgba(207,201,220,.4);background:transparent;color:var(--ivory)}
 .consent .consent-yes{background:var(--ivory);color:var(--purple);border-color:var(--ivory)}
 @media(prefers-reduced-motion:reduce){.consent{animation:none}}
+
+/* hand-drawn sage underline under "impossible to miss!" */
+h1 .swoosh{position:relative;display:inline-block;padding-bottom:.16em}
+h1 .swoosh::after{content:"";position:absolute;left:2%;right:2%;bottom:-.08em;height:.28em;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 24' preserveAspectRatio='none'%3E%3Cpath d='M4 16 C 90 6, 200 4, 396 12' fill='none' stroke='%23c8d6c0' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  transform-origin:left center;animation:swoosh-draw .9s .5s var(--ease-out) both}
+@keyframes swoosh-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){h1 .swoosh::after{animation:none}}
