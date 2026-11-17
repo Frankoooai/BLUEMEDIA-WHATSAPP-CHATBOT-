@@ -29,7 +29,7 @@
     "Mugs": { d: "Printed mugs for offices, gifts and promotions." },
     "Umbrellas": { d: "Branded umbrellas in your choice of colours, printed with your logo so it stays visible come rain or shine.", img: ["work/umbrellas-wambugu.webp"] },
     "Keyrings": { d: "Metal and leather keyrings, personalised with a name, logo, date or even a number plate. Made to order, one piece or a full batch.", img: ["work/keyring-plate-yellow.webp", "work/keyring-plate-white.webp", "work/keyring-ceo.webp"] },
-    "Bags": { d: "Tote bags, backpacks and conference bags with your branding, ideal for events and gifts." },
+    "Bags": { d: "Tote bags, backpacks and conference bags with your branding, ideal for events and gifts. Printed in bulk and packed ready to hand out.", img: ["work/bags-etema.webp", "work/bags-unicorn.webp", "work/bags-wellness.webp"] },
     "Diaries & pens": { d: "Branded diaries, notebooks and pens for staff, clients and year-end gifting." },
     // Creative & Digital
     "Creative & graphic design": { d: "Design for anything you need to print, post or present, all in a consistent style that fits your brand." },
