@@ -88,30 +88,71 @@
 
 <main id="top">
 
-<!-- 1. HERO: one big statement -> showreel -> CTA -> trust beside CTA -->
+<!-- 1. HERO: split layout. Left: statement + CTA. Right: slideshow of our work -->
 <div class="royal">
-<section class="hero">
-  <p class="eyebrow orn">Brand Consultancy · Brand Growth · Exhibition Design &amp; Build</p>
-  <h1>We make brands<br><em class="swoosh">impossible to miss!</em></h1>
-  <p class="hero-sub">From the business card in your client's hand to the stand that stops a whole expo hall. Designed, produced and installed by one team.</p>
-
-  <div class="vsl" id="vsl">
-    <!-- Replace with your showreel / VSL:
-         <video controls poster="vsl-poster.jpg" src="vsl.mp4"></video> -->
-    <button class="vsl-play" type="button" aria-label="Play showreel (placeholder)">
-      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-    </button>
-    <p class="vsl-note">Showreel placeholder · 60–90s of finished stands, wraps, signage and print, then the free audit offer</p>
+<section class="hero hero-split">
+  <div class="hero-copy">
+    <p class="eyebrow orn">Brand Consultancy · Brand Growth · Exhibition Design &amp; Build</p>
+    <h1>We make brands<br><em class="swoosh">impossible to miss!</em></h1>
+    <p class="hero-sub">From the business card in your client's hand to the stand that stops a whole expo hall. Designed, produced and installed by one team.</p>
+    <div class="cta-row">
+      <a class="btn btn-lg btn-wa" href="https://wa.me/254182832454?text=Hello%20Decent%20Image%20Media%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.7-1.9c1.9 1 4 1.6 6.3 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.3c-2 0-3.9-.6-5.5-1.6l-.4-.2-4 1.1 1.1-3.8-.3-.4a10.3 10.3 0 0 1-1.7-5.6C5.2 10 10 5.3 16 5.3S26.8 10 26.8 15.8 22 26.3 16 26.3zm5.9-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.3 5.3 4.6.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
+        Chat with us on WhatsApp
+      </a>
+      <a class="btn-ghost" href="#book">Get a free brand audit</a>
+    </div>
+    <ul class="trust-near-cta">
+      <li>Design to installation, one team</li>
+      <li>Quoted to an agreed scope</li>
+    </ul>
   </div>
 
-  <div class="cta-row">
-    <a class="btn btn-lg" href="#book">Get My Free Brand Audit</a>
-    <a class="btn-ghost" href="#work">See our work</a>
+  <div class="hero-show" id="showreel" role="region" aria-roledescription="carousel" aria-label="Our work">
+    <div class="show-track" aria-live="off">
+      <figure class="show-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 9: Exhibition stand, Al Ayed Group Industries · Big 5 Construct Kenya">
+        <img src="work/alayed-stand.webp" alt="Exhibition stand for Al Ayed Group Industries · Big 5 Construct Kenya" fetchpriority="high" style="object-position:center">
+        <figcaption><span>Exhibition stand</span><b>Al Ayed Group Industries · Big 5 Construct Kenya</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="2 of 9: Exhibition stand, Marstek" aria-hidden="true">
+        <img src="work/marstek-stand.webp" alt="Exhibition stand for Marstek" loading="lazy" style="object-position:center 40%">
+        <figcaption><span>Exhibition stand</span><b>Marstek</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="3 of 9: Vehicle wrap design, Weetabix · Onja Kamoja" aria-hidden="true">
+        <img src="work/weetabix-van.webp" alt="Vehicle wrap design for Weetabix · Onja Kamoja" loading="lazy" style="object-position:center">
+        <figcaption><span>Vehicle wrap design</span><b>Weetabix · Onja Kamoja</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="4 of 9: Exhibition stand, Yanyi Group" aria-hidden="true">
+        <img src="work/yanyi-stand.webp" alt="Exhibition stand for Yanyi Group" loading="lazy" style="object-position:center">
+        <figcaption><span>Exhibition stand</span><b>Yanyi Group</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="5 of 9: Teardrop flags, Event branding" aria-hidden="true">
+        <img src="work/teardrop-flags.webp" alt="Teardrop flags for Event branding" loading="lazy" style="object-position:center">
+        <figcaption><span>Teardrop flags</span><b>Event branding</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="6 of 9: Pylon signage, Aeron" aria-hidden="true">
+        <img src="work/aeron-pylon.webp" alt="Pylon signage for Aeron" loading="lazy" style="object-position:center 30%">
+        <figcaption><span>Pylon signage</span><b>Aeron</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="7 of 9: Street pole banners, Event branding" aria-hidden="true">
+        <img src="work/pole-banners.webp" alt="Street pole banners for Event branding" loading="lazy" style="object-position:center">
+        <figcaption><span>Street pole banners</span><b>Event branding</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="8 of 9: Projecting lightbox, Costa Coffee" aria-hidden="true">
+        <img src="work/costa-lightbox.webp" alt="Projecting lightbox for Costa Coffee" loading="lazy" style="object-position:center 30%">
+        <figcaption><span>Projecting lightbox</span><b>Costa Coffee</b></figcaption>
+      </figure>
+      <figure class="show-slide" role="group" aria-roledescription="slide" aria-label="9 of 9: Signage installation, SAG-CO Construction" aria-hidden="true">
+        <img src="work/sagco-pylon.webp" alt="Signage installation for SAG-CO Construction" loading="lazy" style="object-position:center 35%">
+        <figcaption><span>Signage installation</span><b>SAG-CO Construction</b></figcaption>
+      </figure>
+    </div>
+    <div class="show-ui">
+      <button class="show-btn show-prev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="show-dots" role="group" aria-label="Choose a project"></div>
+      <button class="show-btn show-next" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
   </div>
-  <ul class="trust-near-cta">
-    <li>Design to installation, one team</li>
-    <li>Quoted to an agreed scope</li>
-  </ul>
 </section>
 </div>
 

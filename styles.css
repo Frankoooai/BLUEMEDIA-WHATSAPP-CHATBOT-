@@ -685,3 +685,55 @@ html{scroll-padding-top:96px}
 /* new logo: shown on a white disc so it keeps its white details on the dark header and footer */
 .logo-img,.foot-brand img{background:#fff;border-radius:50%;padding:3px;object-fit:contain;box-shadow:0 0 0 1px rgba(207,201,220,.35)}
 .logo-img{width:46px;height:46px}
+
+
+/* ===================== split hero with work slideshow ===================== */
+.hero.hero-split{max-width:1240px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;text-align:left;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.hero-copy{min-width:0}
+.hero-split .orn{justify-content:flex-start}
+.hero-split .orn::before{display:none}
+.hero-split h1{font-size:clamp(30px,3.5vw,52px);margin-bottom:22px}
+.hero-split .hero-sub{margin:0 0 30px;max-width:520px}
+.hero-split .cta-row,.hero-split .trust-near-cta{justify-content:flex-start}
+.hero-split h1 .swoosh::after{left:0;right:4%}
+
+.hero-show{position:relative;min-width:0;border-radius:20px;overflow:hidden;aspect-ratio:1/1.08;max-height:640px;width:100%;background:#170a30;border:1px solid rgba(207,201,220,.26);box-shadow:0 40px 90px rgba(8,3,20,.55)}
+.show-track{position:absolute;inset:0}
+.show-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s var(--ease-out);pointer-events:none}
+.show-slide.is-active{opacity:1;pointer-events:auto}
+.show-slide img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02)}
+.show-slide.is-active img{animation:show-zoom 6s var(--ease-out) both}
+@keyframes show-zoom{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+.show-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:70px 22px 76px;background:linear-gradient(180deg,transparent,rgba(17,7,36,.88));display:flex;flex-direction:column;gap:4px}
+.show-slide figcaption span{font:500 11.5px/1 var(--label);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.show-slide figcaption b{font:600 clamp(17px,1.6vw,21px)/1.25 var(--serif);color:#fff}
+.show-ui{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:center;gap:12px;z-index:2}
+.show-btn{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(17,7,36,.45);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px);transition:background-color .16s var(--ease-out),transform .16s var(--ease-out)}
+.show-btn:active{transform:scale(.94)}
+@media(hover:hover){.show-btn:hover{background:rgba(255,255,255,.18)}}
+.show-dots{flex:1;display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.show-dot{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s var(--ease-out),background-color .3s var(--ease-out)}
+.show-dot[aria-current="true"]{width:24px;background:var(--gold)}
+.hero-show :focus-visible{outline:2px solid var(--ivory);outline-offset:2px}
+
+@media(max-width:900px){
+  .hero.hero-split{grid-template-columns:1fr;gap:36px;text-align:center}
+  .hero-split .orn{justify-content:center}
+  .hero-split .orn::before{display:block}
+  .hero-split .hero-sub{margin:0 auto 30px}
+  .hero-split .cta-row,.hero-split .trust-near-cta{justify-content:center}
+  .hero-split h1{font-size:clamp(28px,7vw,48px)}
+  .hero-show{aspect-ratio:4/4.3;max-width:560px;margin:0 auto}
+}
+@media(prefers-reduced-motion:reduce){.show-slide{transition:none}.show-slide.is-active img{animation:none}}
+
+/* WhatsApp as the hero's main button */
+.royal .btn.btn-wa,.btn.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#0b2e17;border-radius:999px;padding:16px 30px}
+.royal .btn.btn-wa:hover,.btn.btn-wa:hover{background:#2ee06f;box-shadow:0 12px 34px rgba(37,211,102,.28)}
+/* the floating WhatsApp bubble waits until the hero button has scrolled away */
+.wa-float{transition:opacity .25s var(--ease-out),transform .25s var(--ease-out)}
+.hero-wa-visible .wa-float{opacity:0;transform:scale(.8);pointer-events:none}
+.hero-split .orn::after{display:none}
+.hero-split h1{font-size:clamp(28px,3.05vw,46px)}
+@media(max-width:900px){.hero-split .orn::after{display:block}.hero-split h1{font-size:clamp(26px,7vw,44px)}}
+.hero-split h1{font-size:clamp(28px,3.05vw,43px)}@media(max-width:900px){.hero-split h1{font-size:clamp(26px,7vw,44px)}}

@@ -236,3 +236,63 @@ document.getElementById("yr").textContent = new Date().getFullYear();
   let w = window.innerWidth;
   window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - w) > 80) { w = window.innerWidth; render(); } });
 })();
+
+// Hero slideshow of our work: crossfades every few seconds, pauses on hover/focus,
+// stops for visitors who prefer reduced motion, and can be stepped with buttons, dots or arrow keys.
+(function () {
+  const show = document.getElementById("showreel");
+  if (!show) return;
+  const slides = [...show.querySelectorAll(".show-slide")];
+  const dotsBox = show.querySelector(".show-dots");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i = 0, timer = null, paused = false;
+
+  const dots = slides.map((s, n) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "show-dot";
+    b.setAttribute("aria-label", "Show project " + (n + 1));
+    b.addEventListener("click", () => { go(n); restart(); });
+    dotsBox.append(b);
+    return b;
+  });
+
+  function go(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => {
+      const on = k === i;
+      s.classList.toggle("is-active", on);
+      s.toggleAttribute("aria-hidden", !on);
+      if (on) { const img = s.querySelector("img"); if (img.loading === "lazy") img.loading = "eager"; }
+    });
+    dots.forEach((d, k) => d.setAttribute("aria-current", k === i ? "true" : "false"));
+    // warm the next image so the crossfade never shows a blank frame
+    const nxt = slides[(i + 1) % slides.length].querySelector("img");
+    if (nxt.loading === "lazy") nxt.loading = "eager";
+  }
+  function restart() {
+    clearInterval(timer);
+    if (!still && !paused && !document.hidden) timer = setInterval(() => go(i + 1), 4800);
+  }
+  show.querySelector(".show-prev").addEventListener("click", () => { go(i - 1); restart(); });
+  show.querySelector(".show-next").addEventListener("click", () => { go(i + 1); restart(); });
+  show.addEventListener("mouseenter", () => { paused = true; restart(); });
+  show.addEventListener("mouseleave", () => { paused = false; restart(); });
+  show.addEventListener("focusin", () => { paused = true; restart(); });
+  show.addEventListener("focusout", () => { paused = false; restart(); });
+  show.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") { go(i - 1); restart(); }
+    if (e.key === "ArrowRight") { go(i + 1); restart(); }
+  });
+  document.addEventListener("visibilitychange", restart);
+  go(0);
+  restart();
+})();
+
+// While the hero's WhatsApp button is on screen, hide the floating WhatsApp bubble.
+(function () {
+  const btn = document.querySelector(".hero .btn-wa");
+  if (!btn || !("IntersectionObserver" in window)) return;
+  new IntersectionObserver(([e]) => document.body.classList.toggle("hero-wa-visible", e.isIntersecting))
+    .observe(btn);
+})();
