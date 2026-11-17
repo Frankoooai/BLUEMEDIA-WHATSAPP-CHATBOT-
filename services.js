@@ -15,7 +15,7 @@
     "2D flat-cut signage": { d: "Flat-cut letters and logos in acrylic, aluminium or PVC for receptions, offices and feature walls." },
     "3D built-up letters": { d: "Raised, dimensional lettering with optional lighting, made to give your building or reception real presence.", img: "work/costa-lightbox.webp" },
     "Shopfront branding": { d: "Fascia signs, projecting lightboxes and window graphics that make your shop easy to find and hard to ignore.", img: "work/costa-lightbox.webp" },
-    "Wall & floor graphics": { d: "Printed wall murals and floor graphics that turn plain spaces into branded environments and guide people where to go." },
+    "Wall & floor graphics": { d: "Printed wall murals, floor graphics and vision and mission boards in clear acrylic with stand-off fixings. They turn plain walls into branded spaces and put your values where staff and visitors see them every day." },
     "Supermarket in-store": { d: "In-store branding that catches shoppers at the shelf: displays, aisle signage and point-of-sale material." },
     "Gondolas & wobblers": { d: "Gondola ends and shelf wobblers that draw attention to your product right where buying decisions happen." },
     "Shelf strips": { d: "Printed shelf strips that mark out your products and keep your brand visible along the aisle." },
