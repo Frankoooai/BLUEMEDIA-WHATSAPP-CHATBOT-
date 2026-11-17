@@ -9,7 +9,7 @@
     "Company profiles": { d: "A company profile that tells your story clearly: who you are, what you do and the work that proves it. Printed, digital or both." },
     "Menus": { d: "Menus for restaurants, hotels and events, designed for easy reading and printed on durable, wipeable stock where needed." },
     "Annual reports": { d: "Annual and corporate reports laid out so the numbers and story are easy to follow, ready for print and PDF." },
-    "Corporate gifting": { d: "Branded gifts for clients, staff and partners, curated and packaged to suit your budget and the occasion." },
+    "Corporate gifting": { d: "Branded and personalised gifts for clients, staff and partners, curated and packaged to suit your budget and the occasion.", img: ["work/keyring-ceo.webp", "work/umbrellas-wambugu.webp", "work/keyring-plate-yellow.webp"] },
     // Built to Be Seen
     "Billboards": { d: "Large-format billboard artwork designed to be read at a glance, printed and prepared for installation.", img: "work/sagco-pylon.webp" },
     "2D flat-cut signage": { d: "Flat-cut letters and logos in acrylic, aluminium or PVC for receptions, offices and feature walls." },
@@ -27,7 +27,8 @@
     "Corporate uniforms": { d: "Uniforms that make your team look the part, with your branding applied neatly and consistently." },
     "Caps": { d: "Branded caps for staff, events and giveaways, embroidered or printed." },
     "Mugs": { d: "Printed mugs for offices, gifts and promotions." },
-    "Umbrellas": { d: "Branded umbrellas that keep your logo visible come rain or shine." },
+    "Umbrellas": { d: "Branded umbrellas in your choice of colours, printed with your logo so it stays visible come rain or shine.", img: ["work/umbrellas-wambugu.webp"] },
+    "Keyrings": { d: "Metal and leather keyrings, personalised with a name, logo, date or even a number plate. Made to order, one piece or a full batch.", img: ["work/keyring-plate-yellow.webp", "work/keyring-plate-white.webp", "work/keyring-ceo.webp"] },
     "Bags": { d: "Tote bags, backpacks and conference bags with your branding, ideal for events and gifts." },
     "Diaries & pens": { d: "Branded diaries, notebooks and pens for staff, clients and year-end gifting." },
     // Creative & Digital
@@ -45,7 +46,10 @@
     '<div class="svc-backdrop" data-close></div>' +
     '<section class="svc-card" role="dialog" aria-modal="true" aria-labelledby="svc-title">' +
     '<button type="button" class="svc-x" aria-label="Close" data-close>×</button>' +
-    '<img class="svc-img" alt="">' +
+    '<div class="svc-media"><img class="svc-img" alt="">' +
+    '<button type="button" class="svc-nav svc-prev" aria-label="Previous photo">‹</button>' +
+    '<button type="button" class="svc-nav svc-next" aria-label="Next photo">›</button>' +
+    '<span class="svc-count"></span></div>' +
     '<div class="svc-body"><p class="svc-group"></p><h3 id="svc-title"></h3><p class="svc-desc"></p>' +
     '<div class="svc-actions">' +
     '<a class="btn svc-wa" target="_blank" rel="noopener">Ask on WhatsApp</a>' +
@@ -54,14 +58,28 @@
   document.body.append(wrap);
   const $ = (s) => wrap.querySelector(s);
   let lastFocus = null;
+  let photos = [], at = 0, photoName = "";
+  function showPhoto(n) {
+    at = (n + photos.length) % photos.length;
+    const img = $(".svc-img");
+    img.src = photos[at];
+    img.alt = photoName + (photos.length > 1 ? " (photo " + (at + 1) + " of " + photos.length + ")" : "");
+    $(".svc-count").textContent = (at + 1) + " / " + photos.length;
+  }
+  function setPhotos(list, name) {
+    photos = list; photoName = name;
+    const has = list.length > 0, many = list.length > 1;
+    $(".svc-media").hidden = !has;
+    $(".svc-prev").hidden = $(".svc-next").hidden = $(".svc-count").hidden = !many;
+    if (has) showPhoto(0); else $(".svc-img").removeAttribute("src");
+  }
 
   function open(name, group) {
     const info = INFO[name] || { d: "Ask us about " + name.toLowerCase() + " and we'll put together a quote for your brand." };
     $(".svc-group").textContent = group;
     $("#svc-title").textContent = name;
     $(".svc-desc").textContent = info.d;
-    const img = $(".svc-img");
-    if (info.img) { img.src = info.img; img.alt = name; img.hidden = false; } else { img.hidden = true; img.removeAttribute("src"); }
+    setPhotos(info.img ? [].concat(info.img) : [], name);
     $(".svc-wa").href = "https://wa.me/" + WA + "?text=" +
       encodeURIComponent("Hello Decent Image Media, I'd like a quote for " + name.toLowerCase() + ".");
     $(".svc-quote").dataset.service = name;
@@ -79,9 +97,13 @@
   }
 
   wrap.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) close(); });
+  $(".svc-prev").addEventListener("click", () => showPhoto(at - 1));
+  $(".svc-next").addEventListener("click", () => showPhoto(at + 1));
   document.addEventListener("keydown", (e) => {
     if (wrap.hidden) return;
     if (e.key === "Escape") close();
+    if (photos.length > 1 && e.key === "ArrowLeft") showPhoto(at - 1);
+    if (photos.length > 1 && e.key === "ArrowRight") showPhoto(at + 1);
     if (e.key === "Tab") { // keep focus inside the popup
       const f = [...wrap.querySelectorAll("button, a[href]")].filter((el) => el.offsetParent);
       const first = f[0], last = f[f.length - 1];
