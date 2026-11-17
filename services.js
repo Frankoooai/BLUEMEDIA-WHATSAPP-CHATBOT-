@@ -33,8 +33,6 @@
     // Creative & Digital
     "Creative & graphic design": { d: "Design for anything you need to print, post or present, all in a consistent style that fits your brand." },
     "Brand identity": { d: "Logo, colours, typography and guidelines that give your business a clear, recognisable identity." },
-    "Websites": { d: "A website that represents your brand properly and turns visitors into enquiries." },
-    "Social media": { d: "Social media graphics and campaign artwork that keep your brand consistent across every platform." },
     "Interior design": { d: "Branded interiors for offices, receptions and retail spaces, so your space reflects your brand." },
   };
   const WA = "254182832454";
