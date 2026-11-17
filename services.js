@@ -3,7 +3,7 @@
 (function () {
   const INFO = {
     // First Impressions
-    "Business cards": { d: "Cards that feel as good as they look. Choose the stock, finish and special touches such as matt lamination, spot UV or rounded corners." },
+    "Business cards": { d: "Cards that feel as good as they look. Choose the stock, finish and special touches such as matt lamination, spot UV or rounded corners.", img: ["work/cards-taiga.webp", "work/cards-sunshine.webp"] },
     "Letterheads & slips": { d: "Letterheads, compliment slips and delivery notes designed to match your brand, so every document you send looks consistent." },
     "Brochures & flyers": { d: "Folded brochures and flyers for launches, promotions and exhibitions, from layout and copy through to print." },
     "Company profiles": { d: "A company profile that tells your story clearly: who you are, what you do and the work that proves it. Printed, digital or both." },
