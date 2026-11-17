@@ -57,6 +57,7 @@ const CONFIG = {
       Business: f.business.value.trim(),
       Industry: f.industry.value,
       "Interested in": f.package.value || "Free brand audit / not sure yet",
+      "Service asked about": (f.service && f.service.value) || "Not specified",
       "Website or Instagram": f.link.value.trim() || "Not given",
       _subject: "New enquiry from the website: " + f.business.value.trim(),
       _replyto: f.email.value.trim(),
